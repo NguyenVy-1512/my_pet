@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="BannerAds_adUnitId" templateMergeStrategy="preserve" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+        <string name="Admob_App_Id" templateMergeStrategy="preserve" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+        <string name="InterstitialAds_adUnitId" templateMergeStrategy="preserve" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+</resources>

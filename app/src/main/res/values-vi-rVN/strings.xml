@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Thú cưng của tôi</string>
+    <string name="label_empty_result">Oops, there are no results to display</string>
+    <string name="label_error_result">Oops, there was an error fetching the data</string>
+    <string name="button_check_again">Check again</string>
+    <string name="button_try_again">Try again</string>
+    <string name="movie_calendar">Danh sách phim</string>
+
+    <string name="tiki_exercise">Bài tập Tiki</string>
+    <string name="movie">Phim</string>
+    <string name="address">371 Tô Ngọc Vân, Thạch Xuân, Quận 12, Thành phố Hồ Chí Minh </string>
+    <string name="link">http://cuahangpet.com/</string>
+    <string name="phone">01653659895</string>
+    <string name="time">9h ~ 21h</string>
+    <string name="comment">Đây là một trong những shop mà mình ưng ý nhất vì sự đa dạng và tận tình của nhân viên hướng dẫn. Thú cứng rất xinh và vừa giá tiền của mình. Mình sẽ tiếp tục ủng hộ</string>
+    <string name="selected_item">Chọn khoảng cách:</string>
+</resources>

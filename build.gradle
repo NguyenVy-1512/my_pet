@@ -1,0 +1,91 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+apply from: 'dependencies.gradle'
+apply plugin: 'com.selesse.git.changelog'
+
+buildscript {
+    ext.kotlin_version = '1.4.10'
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.hiya:jacoco-android:0.2"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.1"
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.2'
+        classpath "gradle.plugin.com.gladed.gradle.androidgitversion:gradle-android-git-version:0.4.0"
+        classpath 'com.selesse:gradle-git-changelog:0.3.0'
+        classpath "gradle.plugin.com.betomorrow.gradle:appcenter-plugin:1.2.1"
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.7.2"
+        classpath "gradle.plugin.com.palantir.gradle.gitversion:gradle-git-version:0.11.0"
+        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16"
+        classpath "ru.cian:huawei-publish-gradle-plugin:1.1.0"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+changelog {
+    markdown {
+        commitFormat = '* %s (%aE)'
+    }
+}
+
+task updateChangelog {
+    doLast {
+        def envVars = [:]
+        envVars['APPCENTER_RELEASE_NOTES'] = rootProject.file("build/CHANGELOG.md").absoluteFile.getText('UTF-8')
+        tasks.withType(Exec) { environment << envVars }
+        println envVars['APPCENTER_RELEASE_NOTES']
+    }
+}
+
+subprojects { subproject ->
+    ext.addAndroidConfig ={
+        android {
+            compileSdkVersion rootProject.ext.compileSdkVersion
+            buildToolsVersion rootProject.ext.buildToolsVersion
+
+            defaultConfig {
+                minSdkVersion rootProject.ext.minSdkVersion
+                targetSdkVersion rootProject.ext.compileSdkVersion
+            }
+
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
+
+            lintOptions {
+                abortOnError false
+            }
+
+            testOptions {
+                unitTests {
+                    includeAndroidResources = true
+                }
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+static def isCI() {
+    System.getenv("CI")
+}

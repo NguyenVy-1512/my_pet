@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#A63126</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="textColorPrimaryInverse">#FFFFFF</color>
+    <color name="buttonColor">#A63126</color>
+    <color name="BackgroundColor">#D9BDAD</color>
+    <color name="textbuttonColor">#FFFFF2</color>
+    <color name="rating">#BF6A39</color>
+    <color name="line">#000000</color>
+    <color name="star">#6F7173</color>
+</resources>
